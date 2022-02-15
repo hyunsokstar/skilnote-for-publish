@@ -62,7 +62,7 @@
     {% if object_list.exists %} {% for u in user_list %}
     <tr class={% if u.username == request.user.username %} {{"login_user_row"}} {% endif %}>
       <td id="user_name_{{u.id}}">
-        <a href="http://www.skilnote-for-react.co.kr/wm/myshortcut/{{u.username}}/1" title="{{u.profile.phone}}">
+        <a href="http://www.skilnote-for-jpa.co.kr/wm/myshortcut/{{u.username}}/1" title="{{u.profile.phone}}">
           {{u.username}}
         </a>
       </td>
@@ -140,7 +140,7 @@
 
       <td>
         <a
-          href="http://www.skilnote-for-react.co.kr/wm/myshortcut/{{u.username}}/{{ u.profile.last_updated_category }}">ca{{u.profile.last_updated_category}}</a>
+          href="http://www.skilnote-for-jpa.co.kr/wm/myshortcut/{{u.username}}/{{ u.profile.last_updated_category }}">ca{{u.profile.last_updated_category}}</a>
       </td>
 
       {% if u.username == request.user.username %} {% else %} {% endif %}
@@ -159,7 +159,7 @@
         {%if u.allowlistforskilnote_set.exists %}
           {% for a in u.allowlistforskilnote_set.all %}
 
-            <a href="http://www.skilnote-for-react.co.kr/wm/myshortcut/{{a.member}}/1" title="{{u.profile.phone}}" style="color:blue">
+            <a href="http://www.skilnote-for-jpa.co.kr/wm/myshortcut/{{a.member}}/1" title="{{u.profile.phone}}" style="color:blue">
               {{a.member}} &nbsp;
             </a>
 

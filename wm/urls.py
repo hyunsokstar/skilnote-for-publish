@@ -196,7 +196,7 @@ urlpatterns = [
          views.update_category_by_ajax, name='update_category_by_ajax'),
 
     # 비로그인 유저 리스트에 입력폼 추가 하기
-    # D:\new-skilnote\skilnote-for-react\wm\urls.py
+    # D:\new-skilnote\skilnote-for-jpa\wm\urls.py
     path('myshortcut/<str:user>/<int:category_id>',
          views.MyShortcutListByUser.as_view(), name="skil_note_list_by_user"),
 
