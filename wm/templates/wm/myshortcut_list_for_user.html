@@ -267,16 +267,19 @@ height: auto !important;
 	<tr id="shortcut_{{p.id}}-2" style="background-color:#f1f9f0">
 		<td>file</td>
 		<td>
-			<div class="input-group">
-				<input type="text" class="form-control" id="file_{{p.id}}" value="{{p.filename}}"
-					aria-describedby="button-addon4">
-				<div class="input-group-append" id="button-addon4">
-					<button class="btn btn-outline-secondary" type="button"
-						onclick="copy_for_file_name({{p.id}})">total</button>
-					<button class="btn btn-outline-secondary" type="button"
-						onclick="copy_for_file_name2({{p.id}})">file</button>
+			<span ondblclick = "modify_for_file_name({{p.id}})">
+				<div class="input-group">
+					<input type="text" class="form-control" id="file_{{p.id}}" value="{{p.filename}}"
+						aria-describedby="button-addon4">
+					<div class="input-group-append" id="button-addon4">
+						<button class="btn btn-outline-secondary" type="button"
+							onclick="copy_for_file_name({{p.id}})">total</button>
+						<button class="btn btn-outline-secondary" type="button"
+							onclick="copy_for_file_name2({{p.id}})">file</button>
+					</div>
 				</div>
-			</div>
+			</span>
+
 			<button class="badge badge-pill badge-info file_history_button float-right" data-file_name={{p.filename}}
 				name="button">history</button>
 		</td>
@@ -347,16 +350,19 @@ height: auto !important;
 	<tr id="shortcut_{{p.id}}-2" style="background-color:#f1f9f0">
 		<td>file</td>
 		<td>
-			<div class="input-group">
-				<input type="text" class="form-control" id="file_{{p.id}}" value="{{p.filename}}"
-					aria-describedby="button-addon4">
-				<div class="input-group-append" id="button-addon4">
-					<button class="btn btn-outline-secondary" type="button"
-						onclick="copy_for_file_name({{p.id}})">total</button>
-					<button class="btn btn-outline-secondary" type="button"
-						onclick="copy_for_file_name2({{p.id}})">file</button>
+			<span ondblclick = "modify_for_file_name({{p.id}})">
+				<div class="input-group">
+					<input type="text" class="form-control" id="file_{{p.id}}" value="{{p.filename}}"
+						aria-describedby="button-addon4">
+					<div class="input-group-append" id="button-addon4">
+						<button class="btn btn-outline-secondary" type="button"
+							onclick="copy_for_file_name({{p.id}})">total</button>
+						<button class="btn btn-outline-secondary" type="button"
+							onclick="copy_for_file_name2({{p.id}})">file</button>
+					</div>
 				</div>
-			</div>
+			</span>
+
 			<span class="result_for_file_name_copy_{{p.id}}"></span>
 
 			<!-- <button class="badge badge-pill badge-info skil_note_file_name_update_btn float-right" id={{p.id}}>파일 수정</button> -->
@@ -1156,6 +1162,22 @@ height: auto !important;
 	});
 
 	function modify_for_file_name(id) {
+		let allowed_for_current_user = "{{allowed_for_current_user}}"
+		const page_user = "{{ page_user }}"
+		const current_user = "{{request.user}}"
+
+		console.log("allowed_for_current_user : ", allowed_for_current_user);
+
+		if(current_user == page_user){
+			console.log("노트 주인입니다");
+			allowed_for_current_user = "True"
+		}
+
+		if(allowed_for_current_user == "False"){
+			alert("허용된 유저가 아닙니다");
+			return
+		}
+
 		const file_name = $("#file_" + id).val()
 		username = "{{request.user}}"
 		console.log("username : ", username);
