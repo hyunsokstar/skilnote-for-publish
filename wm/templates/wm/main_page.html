@@ -161,7 +161,12 @@
     <tr>
       <td>
         멤버 ( 총 {{u.allowlistforskilnote_set.count}} 명 )
-        <button data-username="{{u.username}}" class="showAllowListButton">참여 </button>
+        <button data-username="{{u.username}}" class="btn btn-sm btn-outline-dark showAllowListButton">참여 </button>
+
+        <button class="btn btn-sm btn-outline-dark">
+          <a href="http://www.skilnote-for-jpa.co.kr/wm/myshortcut/{{u.username}}/1">도전 과제</a>
+        </button>
+
       </td>
       <td colspan="9">
         {%if u.allowlistforskilnote_set.exists %}
